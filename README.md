@@ -10,7 +10,7 @@
 
 ## Why a graph database?
 
-Career mobility questions are about *connections*, not rows:
+I picked careers because the interesting questions are relationship questions. People do not move in a straight ladder — they pick up skills, jump sideways, and land in roles that share only part of the previous job. A table can store “role A needs skill X”, but it gets awkward the moment you ask for a *path* or a *bridge*.
 
 | Question | Graph | Relational |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ Career mobility questions are about *connections*, not rows:
 | Which roles bridge two careers via shared skills? | 2-hop pattern over `REQUIRES` | Repeated self-joins + set intersection |
 | Neighborhood of a role (skills, people, related roles) | Fan-out from one node | Join-table gymnastics that grow with every new edge type |
 
-A graph keeps the domain language intact: roles *require* skills, people *worked as* roles, skills *relate to* skills. That model is the product — not an afterthought bolted onto tables.
+With CognoDB the model stays readable: roles `REQUIRES` skills, people `WORKED_AS` roles, skills `RELATED_TO` other skills. The product is the traversal, not another join table.
 
 ---
 
@@ -209,15 +209,16 @@ docs/
 
 ## Hosted demo
 
-- **Live app:** _add Vercel / Railway URL after deploy_
-- **Screen recording:** _add Loom / Drive link_
+- **Live app:** https://lattice-career.vercel.app
+- **GitHub:** https://github.com/anamika991/lattice
+- **Screen recording:** _add your Loom / Drive link after recording_
 
 ### Deploy (Vercel)
 
 1. Push this repo to GitHub.
-2. Import the project in Vercel.
+2. Import the project in Vercel (or `npx vercel --prod`).
 3. Set `COGNODB_URI`, `COGNODB_USER`, `COGNODB_PASSWORD` in project env vars.
-4. Deploy. Run `npm run seed` once from your machine (or a one-off CI job) against the same instance.
+4. Deploy. Run `npm run seed` once from your machine against the same CognoDB instance.
 
 ---
 
@@ -228,8 +229,8 @@ docs/
 - [x] Multi-hop + SQL-awkward Cypher (parameterised)
 - [x] Web UI with loading / empty / error states
 - [x] Secrets via env vars
-- [ ] Hosted demo URL
+- [x] Hosted demo URL
 - [ ] Short screen recording
-- [ ] Email `hr@wexa.ai` — subject: `CognoDB Assignment 2 – <Your Name>`
+- [ ] Email `hr@wexa.ai` — subject: `CognoDB Assignment 2 – Anamika`
 
 Keep the CognoDB instance running until you hear back.
